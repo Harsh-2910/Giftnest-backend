@@ -1,0 +1,19 @@
+package com.example.giftnest.config;
+
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+import java.util.Map;
+
+@Component("/giftnestProps")
+@Data
+@ConfigurationProperties(prefix = "giftnest")
+public class GiftnestProps {
+    @Min(value=5, message="must be between 5 and 25")
+    @Max(value=25, message="must be between 5 and 25")
+    private int pageSize;
+    private Map<String,String> products;
+}
